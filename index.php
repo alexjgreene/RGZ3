@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 	<head>
 		<title>Вывод количества дней, прошедших с первого мая текущего года</title>
 	</head>
@@ -6,22 +6,25 @@
 		<h2 align=center>Вывод количества дней, прошедших с первого мая текущего года</h2>
 		<?php
 			if(isset($_GET['value'])){
-			$Date = DateTime::createFromFormat(
-				'Y-m-d',
-				$_GET['value']
-			);
-		}
+				$Date = DateTime::createFromFormat(
+					'Y-m-d',
+					$_GET['value']
+				);
+			}
+			else{
+				$Date=new DateTime;
+			}
 		?>
 		<form align=center action="index.php" method="GET">
 			<input type="date" name="value" value="<?php
 			if(isset($Date)){
-				echo htmlspecialchars($Date-> Format('d.m.Y'));
+				echo htmlspecialchars($Date-> Format('Y-m-d'));
 			}
 			?>">
-			<input type="submit" value="Узнать результат">
+			<input type="submit" name="result" value="Узнать результат">
 		</form>
 	    <?php
-			if(isset($Date)){
+			if(isset($Date) && $_GET['result']){
 				$month = $Date -> Format('m');
 				$year = $Date -> Format('Y');
 				$day = $Date -> Format('d');
