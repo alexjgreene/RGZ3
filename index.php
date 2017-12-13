@@ -24,7 +24,7 @@
 			<input type="submit" name="result" value="Узнать результат">
 		</form>
 	    <?php
-			if(isset($Date) && $_GET['result']){
+			if(isset($Date) && isset($_GET['result'])){
 				$month = $Date -> Format('m');
 				$year = $Date -> Format('Y');
 				$day = $Date -> Format('d');
